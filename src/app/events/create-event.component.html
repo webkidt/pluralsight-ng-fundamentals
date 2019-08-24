@@ -1,0 +1,75 @@
+<h1>New Event</h1>
+<hr>
+<div class="col-md-6">
+    <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" autocomplete="off" novalidate>
+        <div class="form-group"
+            [ngClass]="{'error': name?.invalid && name?.touched}">
+            <label for="eventName">Event Name:</label>
+            <em *ngIf="name?.invalid && (name?.touched)">Required</em>
+            <input (ngModel)="newEvent.name" #name="ngModel" name="name" required id="name"
+                type="text" class="form-control" placeholder="Name of your event..." />
+        </div>
+        <div class="form-group"
+            [ngClass]="{'error': date?.invalid && date?.touched}">
+            <label for="eventDate">Event Date:</label>
+            <em *ngIf="date?.invalid && (date?.touched)">Required</em>
+            <input (ngModel)="newEvent.date" #date="ngModel" name="date" required id="eventDate"
+                type="text" class="form-control" placeholder="format (mm/dd/yyyy)..." />
+        </div>
+        <div class="form-group"
+            [ngClass]="{'error': time?.invalid && time?.touched}">
+            <label for="eventTime">Event Time:</label>
+            <em *ngIf="time?.invalid && (time?.touched)">Required</em>
+            <input (ngModel)="newEvent.time" #time="ngModel" name="time" required id="eventTime"
+                type="text" class="form-control" placeholder="start and end time..." />
+        </div>
+        <div class="form-group"
+            [ngClass]="{'error': price?.invalid && price?.touched}">
+            <label for="eventPrice">Event Price:</label>
+            <em *ngIf="price?.invalid && (price?.touched)">Required</em>
+            <input (ngModel)="newEvent.price" #price="ngModel" name="price" required id="eventPrice"
+                type="text" type="number" class="form-control" placeholder="event price..." />
+        </div>
+
+        <div ngModelGroup="location">
+            <div class="form-group">
+                <label for="address">Event Location:</label>
+                <input (ngModel)="newEvent.address" #address="ngModel" name="address" id="address"
+                    type="text" class="form-control" placeholder="Address of event..." />
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input (ngModel)="newEvent.city" #city="ngModel" name="city" id="city"
+                        type="text" class="form-control" placeholder="City..." />
+                </div>
+                <div class="col-md-6">
+                    <input (ngModel)="newEvent.country" #country="ngModel" name="country" id="country"
+                        type="text" class="form-control" placeholder="Country..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="onlineUrl">Online Url:</label>
+            <input (ngModel)="newEvent.onlineUrl" #onlineUrl="ngModel" name="onlineUrl" id="onlineUrl" type="text" class="form-control"
+                placeholder="Online Url..." />
+        </div>
+        <div class="form-group"
+            [ngClass]="{'error': imageUrl?.invalid && imageUrl?.touched}">
+            <label for="imageUrl">Image:</label>
+            <em
+                *ngIf="imageUrl?.invalid && imageUrl?.touched && imageUrl?.errors.required">Required</em>
+            <em
+                *ngIf="imageUrl?.invalid && imageUrl?.touched  && imageUrl?.errors.pattern">
+                Must be a png or jpg url
+            </em>
+            <input (ngModel)="newEvent.imageUrl" #imageUrl="ngModel" name="imageUrl" required pattern=".*\/.*.(png|jpg)"
+                id="imageUrl" type="text" class="form-control" placeholder="url of image..." />
+            <img [src]="imageUrl.value" *ngIf="imageUrl?.valid" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default"
+            (click)="cancel()">Cancel</button>
+    </form>
+</div>

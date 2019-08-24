@@ -14,7 +14,8 @@
                 "app",
                 "events",
                 "event",
-                "nav"
+                "nav",
+                "session"
             ],
             "kebab-case"
         ]

@@ -15,7 +15,8 @@
                 "events",
                 "event",
                 "nav",
-                "session"
+                "session",
+                "create"
             ],
             "kebab-case"
         ]

@@ -16,7 +16,8 @@
                 "event",
                 "nav",
                 "session",
-                "create"
+                "create",
+                "collapsible"
             ],
             "kebab-case"
         ]

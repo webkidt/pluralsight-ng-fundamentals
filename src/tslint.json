@@ -4,7 +4,11 @@
         "directive-selector": [
             true,
             "attribute",
-            "app",
+            [
+                "app",
+                "modal",
+                "validate"
+            ],
             "camelCase"
         ],
         "component-selector": [
@@ -17,7 +21,9 @@
                 "nav",
                 "session",
                 "create",
-                "collapsible"
+                "collapsible",
+                "simple",
+                "upvote"
             ],
             "kebab-case"
         ]

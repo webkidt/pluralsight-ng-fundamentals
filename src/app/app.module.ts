@@ -1,7 +1,7 @@
 // tslint:disable: no-string-literal
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -42,7 +42,7 @@ const jQuery = window['$'];
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
         HttpClientModule
     ],
     declarations: [
